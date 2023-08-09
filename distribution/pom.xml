@@ -12,7 +12,6 @@
     <packaging>pom</packaging>
     <name>CnosDB - Flink Extensions Distribution</name>
     <url>https://www.cnosdb.com/</url>
-
     <dependencies>
         <dependency>
             <groupId>com.cnosdb</groupId>

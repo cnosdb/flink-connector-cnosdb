@@ -1,11 +1,11 @@
 package org.example;
 
+import com.cnosdb.flink.streaming.connectors.cnosdb.CnosDBConfig;
+import com.cnosdb.flink.streaming.connectors.cnosdb.CnosDBPoint;
+import com.cnosdb.flink.streaming.connectors.cnosdb.CnosDBSink;
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.connectors.cnosdb.CnosDBConfig;
-import org.apache.flink.streaming.connectors.cnosdb.CnosDBPoint;
-import org.apache.flink.streaming.connectors.cnosdb.CnosDBSink;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
