@@ -1,0 +1,34 @@
+<assembly>
+    <id>src</id>
+
+    <formats>
+        <format>tgz</format>
+        <format>zip</format>
+    </formats>
+
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>cnosdb-flink-${version}-src</baseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>..</directory>
+            <outputDirectory></outputDirectory>
+            <excludes>
+                <exclude>**/.*</exclude>
+                <exclude>**/.*/**</exclude>
+                <exclude>**/*.log</exclude>
+                <exclude>**/*.iml</exclude>
+                <exclude>**/conf/*.properties</exclude>
+                <exclude>**/conf/*.xml</exclude>
+                <exclude>**/dependency-reduced-pom.xml</exclude>
+                <exclude>**/scratch_space</exclude>
+                <exclude>**/scratch_space/**/*</exclude>
+                <exclude>**/target</exclude>
+                <exclude>**/target/**/*</exclude>
+                <exclude>**/temp</exclude>
+                <exclude>**/temp/**/*</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+
+</assembly>
