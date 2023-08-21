@@ -1,5 +1,6 @@
 package com.cnosdb.flink.streaming.connectors.cnosdb;
 
+import okhttp3.HttpUrl;
 import org.apache.flink.util.Preconditions;
 
 import java.io.Serializable;
@@ -7,7 +8,7 @@ import java.io.Serializable;
 public class CnosDBConfig implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String url;
+    private HttpUrl url;
 
     private String username;
 
@@ -20,7 +21,8 @@ public class CnosDBConfig implements Serializable {
     public CnosDBConfig(CnosDBConfig.Builder builder) {
         Preconditions.checkArgument(builder != null, "CnosDBConfig builder can not be null");
 
-        this.url = Preconditions.checkNotNull(builder.getUrl(), "host can not be null");
+        String urlString = Preconditions.checkNotNull(builder.getUrl(), "host can not be null");
+        this.url = Preconditions.checkNotNull(HttpUrl.parse(urlString), String.format("url:%s is invalid", urlString));
         this.username = Preconditions.checkNotNull(builder.getUsername(), "username can not be null");
         this.password = Preconditions.checkNotNull(builder.getPassword(), "password can not be null");
         this.tenant = builder.getTenant();
@@ -90,7 +92,7 @@ public class CnosDBConfig implements Serializable {
         }
     }
 
-    public String getUrl() {
+    public HttpUrl getUrl() {
         return url;
     }
 

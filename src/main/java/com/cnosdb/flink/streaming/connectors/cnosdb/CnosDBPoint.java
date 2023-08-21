@@ -84,7 +84,7 @@ public class CnosDBPoint {
     public String lineProtocol() {
         StringBuilder sb = new StringBuilder();
         sb.append(KEY_ESCAPER.apply(measurement));
-        for (Map.Entry<String, String> tag: this.tags.entrySet()) {
+        for (Map.Entry<String, String> tag : this.tags.entrySet()) {
             sb.append(',')
                     .append(KEY_ESCAPER.apply(tag.getKey()))
                     .append('=')
