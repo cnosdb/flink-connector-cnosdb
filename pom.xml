@@ -6,23 +6,32 @@
 
     <groupId>com.cnosdb</groupId>
     <artifactId>flink-connector-cnosdb</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>CnosDB Connector for Apache Flink</name>
+    <description>CnosDB Connector for Apache Flink</description>
     <url>https://cnosdb.org/</url>
-<!--    <licenses>-->
-<!--        <license>-->
-<!--            <name>Apache 2.0 License</name>-->
-<!--            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>-->
-<!--            <distribution>repo</distribution>-->
-<!--        </license>-->
-<!--    </licenses>-->
+    <licenses>
+        <license>
+            <name>GNU AFFERO GENERAL PUBLIC LICENSE (AGPL) Version 3.0</name>
+            <url>https://www.gnu.org/licenses/agpl-3.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/cnosdb/flink-connector-cnosdb/issues</url>
     </issueManagement>
+    <developers>
+        <developer>
+            <id>ZuoTiJia</id>
+            <name>zuotijia</name>
+            <email>changchengxing@gmail.com</email>
+        </developer>
+    </developers>
     <scm>
         <connection>scm:git:git@github.com:cnosdb/flink-connector-cnosdb.git</connection>
-        <url>https://github.com/cnosdb/fink-connector-cnosdb.git</url>
+        <developerConnection>scm:git:git@github.com:cnosdb/flink-connector-cnosdb.git</developerConnection>
+        <url>git@github.com:cnosdb/flink-connector-cnosdb.git</url>
         <tag>HEAD</tag>
     </scm>
     <repositories>
@@ -498,20 +507,28 @@
                             </goals>
                             <configuration>
                                 <rules>
-                                    <compound implementation="com.github.ferstl.maven.pomenforcers.CompoundPedanticEnforcer" combine.children="append">
-                                        <enforcers>POM_SECTION_ORDER,MODULE_ORDER,DEPENDENCY_MANAGEMENT_ORDER,DEPENDENCY_ORDER,DEPENDENCY_CONFIGURATION,DEPENDENCY_ELEMENT,DEPENDENCY_SCOPE,DEPENDENCY_MANAGEMENT_LOCATION,PLUGIN_MANAGEMENT_ORDER,PLUGIN_CONFIGURATION,PLUGIN_ELEMENT,PLUGIN_MANAGEMENT_LOCATION</enforcers>
+                                    <compound
+                                            implementation="com.github.ferstl.maven.pomenforcers.CompoundPedanticEnforcer"
+                                            combine.children="append">
+                                        <enforcers>
+                                            POM_SECTION_ORDER,MODULE_ORDER,DEPENDENCY_MANAGEMENT_ORDER,DEPENDENCY_ORDER,DEPENDENCY_CONFIGURATION,DEPENDENCY_ELEMENT,DEPENDENCY_SCOPE,DEPENDENCY_MANAGEMENT_LOCATION,PLUGIN_MANAGEMENT_ORDER,PLUGIN_CONFIGURATION,PLUGIN_ELEMENT,PLUGIN_MANAGEMENT_LOCATION
+                                        </enforcers>
                                         <!-- DEPENDENCY_ORDER configuration -->
                                         <dependenciesGroupIdPriorities>com.cnosdb</dependenciesGroupIdPriorities>
                                         <dependenciesOrderBy>groupId,artifactId,scope</dependenciesOrderBy>
-                                        <dependenciesScopePriorities>compile,runtime,provided,test</dependenciesScopePriorities>
+                                        <dependenciesScopePriorities>compile,runtime,provided,test
+                                        </dependenciesScopePriorities>
                                         <!-- DEPENDENCY_MANAGEMENT_ORDER configuration -->
-                                        <dependencyManagementGroupIdPriorities>com.cnosdb</dependencyManagementGroupIdPriorities>
-                                        <dependencyManagementOrderBy>groupId,artifactId,scope</dependencyManagementOrderBy>
-                                        <dependencyManagementScopePriorities>compile,runtime,provided,test</dependencyManagementScopePriorities>
+                                        <dependencyManagementGroupIdPriorities>com.cnosdb
+                                        </dependencyManagementGroupIdPriorities>
+                                        <dependencyManagementOrderBy>groupId,artifactId,scope
+                                        </dependencyManagementOrderBy>
+                                        <dependencyManagementScopePriorities>compile,runtime,provided,test
+                                        </dependencyManagementScopePriorities>
                                         <!-- PLUGIN_MANAGEMENT_ORDER configuration -->
                                         <pluginManagementOrderBy>groupId,artifactId</pluginManagementOrderBy>
-                                        <providedDependencies />
-                                        <testDependencies />
+                                        <providedDependencies/>
+                                        <testDependencies/>
                                     </compound>
                                 </rules>
                             </configuration>
@@ -559,6 +576,20 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
                     <version>2.5.2</version>
                 </plugin>
@@ -584,7 +615,18 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.0.1</version>
+                    <version>3.5.0</version>
+                    <configuration>
+                        <source>8</source>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -598,7 +640,8 @@
                             </goals>
                             <configuration>
                                 <transformers>
-                                    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <transformer
+                                            implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                         <resource>reference.conf</resource>
                                     </transformer>
                                 </transformers>
@@ -676,7 +719,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -689,7 +732,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -702,7 +745,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -719,15 +762,16 @@
                         <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
                         <junitxml>.</junitxml>
                         <filereports>ScalaTestsReport.txt</filereports>
-<!--                        <argLine>-ea -Xmx3g -XX:MaxPermSize=${MaxPermGen} -XX:ReservedCodeCacheSize=${CodeCacheSize}</argLine>-->
+                        <!--                        <argLine>-ea -Xmx3g -XX:MaxPermSize=${MaxPermGen} -XX:ReservedCodeCacheSize=${CodeCacheSize}</argLine>-->
                         <argLine>-ea -Xmx3g -XX:ReservedCodeCacheSize=${CodeCacheSize}</argLine>
-                        <stderr />
+                        <stderr/>
                         <environmentVariables>
                             <JAVA_HOME>${test.java.home}</JAVA_HOME>
                         </environmentVariables>
                         <systemProperties>
                             <log4j.configuration>file:src/test/resources/log4j.properties</log4j.configuration>
-                            <java.util.logging.config.file>${basedir}/src/test/resources/logging.properties</java.util.logging.config.file>
+                            <java.util.logging.config.file>${basedir}/src/test/resources/logging.properties
+                            </java.util.logging.config.file>
                         </systemProperties>
                     </configuration>
                     <executions>
@@ -761,7 +805,15 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
@@ -847,7 +899,9 @@
         <profile>
             <id>test-java-home</id>
             <activation>
-                <property><name>env.JAVA_HOME</name></property>
+                <property>
+                    <name>env.JAVA_HOME</name>
+                </property>
             </activation>
             <properties>
                 <test.java.home>${env.JAVA_HOME}</test.java.home>

@@ -6,7 +6,7 @@ following dependency to your project:
     <dependency>
       <groupId>com.cnosdb</groupId>
       <artifactId>flink-connector-cnosdb</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.0</version>
     </dependency>
 
 *Version Compatibility*: This module is compatible with CnosDB 2.1.0+   
